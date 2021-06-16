@@ -1,0 +1,31 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.work-cta-sec {
+  padding: 2rem;
+  margin-bottom: 14rem;
+
+  @include responsive-size(xlarge) {
+    padding: 0;
+  }
+
+  .work-cta {
+    text-align: center;
+    padding: 7.6rem 4rem;
+    background: $dark-violet url("../images/bg-pattern-how-we-work-mobile.svg")
+      no-repeat top right;
+
+    @include responsive-size(medium) {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-image: url("../images/bg-pattern-how-we-work-desktop.svg");
+    }
+
+    button {
+      margin-top: 4.2rem;
+      @include button($very-light-gray, $very-light-gray, $very-dark-violet);
+    }
+  }
+}

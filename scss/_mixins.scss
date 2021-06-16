@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+// Breakpoints //
+$breakpoints: (
+  "medium": 48rem,
+  "large": 62rem,
+  "xlarge": 75rem,
+  "xxlarge": 87.5rem,
+);
+
+// Reponsive
+@mixin responsive-size($size) {
+  $breakpoint-size: map-get($breakpoints, $size);
+
+  @media (min-width: $breakpoint-size) {
+    @content;
+  }
+}
+
+// Button
+@mixin button($color, $hover-bg, $hover-color) {
+  font-size: 1.5rem;
+  font-weight: $fw-bold;
+  color: $color;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  padding: 1.2rem 2.5rem;
+  border: 0.2rem solid $color;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $hover-bg;
+    color: $hover-color;
+  }
+}
+
+// Title Bar
+@mixin title-bar($bg) {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15rem;
+  height: 0.1rem;
+  background-color: $bg;
+}

@@ -1,0 +1,93 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.footer {
+  text-align: center;
+  background: $very-light-gray url("../images/bg-pattern-footer-mobile.svg")
+    no-repeat left top;
+
+  @include responsive-size(medium) {
+    text-align: left;
+    background-image: url("../images/bg-pattern-footer-desktop.svg");
+  }
+
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+
+    @include responsive-size(xlarge) {
+      padding: 0;
+    }
+  }
+
+  &__top {
+    padding: 8.5rem 0 3.8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border-bottom: 0.1rem solid $dark-grayish-violet;
+
+    @include responsive-size(medium) {
+      padding: 9.2rem 0 3.8rem 0;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+
+    &--icon {
+      font-size: 2.5rem;
+      color: $dark-grayish-violet;
+
+      &:hover {
+        color: $very-dark-violet;
+      }
+    }
+  }
+
+  &__nav-container {
+    padding: 4.2rem 0 9rem 0;
+    display: grid;
+    gap: 4.5rem;
+
+    @include responsive-size(medium) {
+      padding: 5rem 0 9rem 0;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include responsive-size(xlarge) {
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: space-between;
+    }
+  }
+
+  .nav-title {
+    font-size: 1.6rem;
+    font-weight: $fw-bold;
+    color: $dark-grayish-violet;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+  }
+
+  .nav-list {
+    li:not(:last-of-type) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .nav-link {
+    text-transform: uppercase;
+    font-weight: $fw-bold;
+    font-size: 1.5rem;
+    color: $very-dark-violet;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

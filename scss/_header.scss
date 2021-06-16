@@ -1,0 +1,131 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Header
+.header {
+  padding: 2.2rem;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  @include responsive-size(medium) {
+    padding: 2rem;
+    position: relative;
+  }
+
+  @include responsive-size(xlarge) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__hamburger {
+    &--close {
+      display: none;
+    }
+
+    @include responsive-size(medium) {
+      display: none;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 8rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: $very-dark-violet url("../images/bg-pattern-mobile-nav.svg")
+      no-repeat left bottom / contain;
+    text-align: center;
+    padding: 0 2.2rem;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @include responsive-size(medium) {
+      position: initial;
+      width: initial;
+      height: initial;
+      background: none;
+      padding: 0;
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+
+  &__link {
+    margin-top: 5rem;
+    text-transform: uppercase;
+    display: block;
+    font-size: 2.2rem;
+    color: $very-light-gray;
+    letter-spacing: 0.2rem;
+
+    @include responsive-size(medium) {
+      display: inline-flex;
+      color: $dark-grayish-violet;
+      font-size: 1.5rem;
+      font-weight: $fw-bold;
+      margin: 0;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $very-dark-violet;
+      }
+    }
+  }
+
+  &__button {
+    @include button($very-light-gray, $very-dark-violet, $very-light-gray);
+    margin-top: 3rem;
+    width: 100%;
+    font-size: 2.2rem;
+    font-weight: $fw-regular;
+
+    @include responsive-size(medium) {
+      @include button($very-dark-violet, $very-dark-violet, $very-light-gray);
+      width: initial;
+      margin-top: 0;
+      margin-left: 1.5rem;
+    }
+  }
+}
+
+// Show Navigation
+.header.active {
+  .header {
+    &__hamburger {
+      &--open {
+        display: none;
+      }
+
+      &--close {
+        display: block;
+      }
+    }
+
+    &__nav {
+      height: 100vh;
+      opacity: 1;
+      visibility: visible;
+
+      @include responsive-size(medium) {
+        height: initial;
+      }
+    }
+  }
+}

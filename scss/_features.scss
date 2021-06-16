@@ -1,0 +1,70 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.features-sec {
+  padding: 10rem 3rem 10rem 3rem;
+  text-align: center;
+
+  @include responsive-size(medium) {
+    text-align: left;
+    padding: 30.5rem 3rem 20rem 3rem;
+  }
+
+  @include responsive-size(xlarge) {
+    padding: 30.5rem 0 20rem 0;
+  }
+
+  &__title {
+    padding: 4.5rem 0 8.5rem 0;
+    position: relative;
+
+    &::after {
+      @include title-bar($dark-grayish-violet);
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include responsive-size(medium) {
+        left: 0;
+        transform: translateX(0);
+      }
+    }
+
+    @include responsive-size(medium) {
+      padding: 6.5rem 0 10rem 0;
+    }
+  }
+
+  &__features {
+    display: grid;
+    gap: 6rem;
+
+    @include responsive-size(medium) {
+      gap: 3rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include responsive-size(large) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// Main Features
+.feature {
+  max-width: 35rem;
+  margin: 0 auto;
+
+  @include responsive-size(medium) {
+    max-width: auto;
+  }
+
+  &__headline {
+    margin: 2.2rem 0 2.2rem 0;
+  }
+
+  &__description {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: $dark-grayish-violet;
+  }
+}
